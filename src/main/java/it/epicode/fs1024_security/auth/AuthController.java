@@ -22,6 +22,8 @@ public class AuthController {
     public AppUser getCurrentUser(@AuthenticationPrincipal AppUser appUser) {
         return appUser;
     }
+
+
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest registerRequest) {
         appUserService.registerUser(registerRequest, Set.of(Role.ROLE_USER)  );

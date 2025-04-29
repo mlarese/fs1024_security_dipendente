@@ -33,6 +33,16 @@ public class AuthRunner implements ApplicationRunner {
             appUserService.registerUser(registerRequest, Set.of(Role.ROLE_ADMIN));
         }
 
+        Optional<AppUser> normalUser = appUserService.findByUsername("user");
+        if (normalUser.isEmpty()) {
+            RegisterRequest registerRequest = new RegisterRequest();
+            registerRequest.setUsername("user");
+            registerRequest.setPassword("userpwd");
+            registerRequest.setNome("Mauro");
+            registerRequest.setCognome("Larese");
+
+            appUserService.registerUser(registerRequest, Set.of(Role.ROLE_USER));
+        }
 
 
 
